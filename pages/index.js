@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Quote from "../components/Quote";
+import Login from "../components/Login";
 
 export default function Home() {
   const [quotes, setQuotes] = useState();
@@ -8,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      fetch("https://api.chucknorris.io/jokes/search?query=cats")
+      fetch("https://api.chucknorris.io/jokes/search?query=plant")
         .then((res) => res.json())
         .then((quotes) => {
           setQuotes(quotes.result);
@@ -26,6 +27,7 @@ export default function Home() {
 
       <main className="flex flex-col justify-center items-center border-[#fc552a] border-4 border-dotted m-5 rounded-xl">
         <h1 className="my-5">Chuck Quotes</h1>
+        <Login />
         <div className="w-[80%]">
           {isLoading ? (
             <h2>Loading... </h2>

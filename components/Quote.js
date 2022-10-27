@@ -19,10 +19,11 @@ function Quote({ quote, index }) {
     const getCuFromDb = async () => {
       const q = query(quotesColRef, where("id", "==", `${quote.id}`));
       const querySnapshot = await getDocs(q);
-      querySnapshot.map((doc) => setCu(doc.data().charlieUttrance));
+      // console.log(querySnapshot);
+      querySnapshot.map((doc) => setCu(doc.data.charlieUttrance));
     };
     quotesColRef && getCuFromDb();
-  }, []);
+  }, [quote.id, quotesColRef]);
 
   const handlePlus = () => {
     setCu(cu + 1);
